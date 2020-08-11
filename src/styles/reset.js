@@ -58,6 +58,7 @@ a {
 img {
   max-width: 100%;
   display: block;
+  height: auto;
 }
 input,
 button,

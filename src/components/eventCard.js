@@ -71,6 +71,7 @@ const StyledEventCard = styled.li`
         position: relative;
         padding: 15px;
         color: ${props => props.theme.colors.white};
+        height: 60%;
 
         h3 {
           font-size: 1.6rem;
