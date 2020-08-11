@@ -1,4 +1,5 @@
 import React from "react"
+import Polygon from "./polygon"
 import styled from "styled-components"
 import { isMobile } from "react-device-detect"
 
@@ -30,12 +31,16 @@ const Nav = () => {
             <a href="">link</a>
           </li>
         </ul>
+        <Polygon angle="left" />
+        <Polygon angle="right" />
       </StyledNav>
     )
   return (
     <StyledNav>
       <img src="./assets/Logo.png" alt="Logo-Small" />
       <ul className="burger"></ul>
+      <Polygon angle="left" />
+      <Polygon angle="right" />
     </StyledNav>
   )
 }
@@ -48,6 +53,7 @@ const StyledNav = styled.nav`
   padding: 25px 5%;
   display: flex;
   justify-content: space-around;
+  position: relative;
 
   ul {
     display: flex;

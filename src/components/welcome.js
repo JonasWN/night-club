@@ -26,6 +26,8 @@ const Welcome = () => {
 }
 
 const StyledWelcome = styled.section`
+  margin-bottom: 15vh;
+
   h2 {
     color: ${props => props.theme.colors.white};
     text-align: center;
@@ -42,7 +44,7 @@ const StyledWelcome = styled.section`
     display: grid;
     grid-gap: 20px 30px;
     place-content: center;
-    grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 280px));
+    grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 320px));
   }
 `
 
