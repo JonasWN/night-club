@@ -28,7 +28,7 @@ const EventCard = () => {
               <Polygon angle="left" />
               <Polygon angle="right" />
             </figcaption>
-            <div className="event-card-background"></div>
+            <div className="event-card-background" />
           </>
         )}
       </figure>

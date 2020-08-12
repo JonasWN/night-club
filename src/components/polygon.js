@@ -10,8 +10,8 @@ const Polygon = ({ angle }) => {
 const StyledPolygonLeft = styled.div`
   clip-path: polygon(25% 0, 0 0, 0 25%);
   background: ${props => props.theme.colors.accent};
-  height: 250px;
-  width: 250px;
+  height: 15em;
+  width: 15em;
   position: absolute;
   top: 0;
   left: 0;
@@ -20,8 +20,8 @@ const StyledPolygonLeft = styled.div`
 const StyledPolygonRight = styled.div`
   clip-path: polygon(100% 75%, 75% 100%, 100% 100%);
   background: ${props => props.theme.colors.accent};
-  height: 280px;
-  width: 280px;
+  height: 15em;
+  width: 15em;
   position: absolute;
   bottom: 0;
   right: 0;
