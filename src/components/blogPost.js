@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import useSWR from "swr"
+import { device } from "../styles/layout"
 
 const fetcher = (...args) => fetch(...args).then(res => res.json())
 
@@ -34,6 +35,10 @@ const StyledBlogPost = styled.article`
   justify-content: space-between;
   color: ${props => props.theme.colors.white};
   font-weight: 300;
+
+  @media ${device.mobile} {
+    margin-bottom: 10vh;
+  }
 
   img {
     filter: saturate(0.6);

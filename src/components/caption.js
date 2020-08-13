@@ -60,13 +60,17 @@ const StyledCaption = styled.li`
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      padding-top: 90px;
 
       img {
         height: 50px;
         width: 120px;
         border: none;
         align-self: center;
+        margin-bottom: 30px;
+
+        &:hover {
+          cursor: pointer;
+        }
       }
 
       h3 {
@@ -78,8 +82,12 @@ const StyledCaption = styled.li`
         position: relative;
         padding: 15px;
         color: ${props => props.theme.colors.white};
-        height: 60%;
+        text-align: center;
 
+        h3 {
+          font-weight: 300;
+          font-size: 0.9rem;
+        }
         .event-card-art-background {
           height: 100%;
           width: 100%;

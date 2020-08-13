@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import Caption from "./caption"
 import Heading from "./heading"
 import styled from "styled-components"
+import { device } from "../styles/layout"
 import { TiArrowShuffle } from "react-icons/ti"
 import { MdVolumeUp, MdPlayCircleOutline } from "react-icons/md"
 import { IoMdArrowDropright, IoMdArrowDropleft } from "react-icons/io"
@@ -124,6 +125,10 @@ const StyledTrack = styled.section`
     display: flex;
     align-items: center;
 
+    @media ${device.mobile} {
+      width: 100%;
+    }
+
     svg {
       margin-right: 10px;
     }
@@ -134,6 +139,10 @@ const StyledTrack = styled.section`
     justify-content: space-between;
     width: 30%;
     align-items: center;
+
+    @media ${device.mobile} {
+      width: 100%;
+    }
 
     li:nth-child(1) svg,
     li:nth-child(3) svg {
@@ -184,12 +193,21 @@ const StyledTrack = styled.section`
     display: flex;
     margin: 0 auto;
 
+    @media ${device.mobile} {
+      flex-direction: column;
+    }
+
     .player {
       width: 70%;
       padding: 25px;
       display: flex;
       flex-direction: column;
       justify-content: space-evenly;
+
+      @media ${device.mobile} {
+        flex-direction: column;
+        width: 100%;
+      }
 
       .duration-input {
         width: 100%;
@@ -200,12 +218,22 @@ const StyledTrack = styled.section`
       display: flex;
       justify-content: space-between;
       align-items: center;
+
+      @media ${device.mobile} {
+        flex-direction: column;
+      }
     }
   }
 
   .track-list {
     display: flex;
     position: relative;
+
+    @media ${device.mobile} {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
 
     svg {
       border: 3px solid #fff;
@@ -217,6 +245,10 @@ const StyledTrack = styled.section`
       top: 50%;
       transform: translate(-0%, -50%);
       font-size: 50px;
+
+      @media ${device.mobile} {
+        display: none;
+      }
     }
     svg:last-child {
       position: absolute;
@@ -224,6 +256,10 @@ const StyledTrack = styled.section`
       top: 50%;
       transform: translate(-0%, -50%);
       font-size: 50px;
+
+      @media ${device.mobile} {
+        display: none;
+      }
     }
   }
 `

@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import { device } from "../styles/layout"
 import { AiOutlineTwitter } from "react-icons/ai"
 import {
   FaFacebookF,
@@ -159,6 +160,11 @@ const StyledFooter = styled.footer`
     display: flex;
     justify-content: space-between;
     position: relative;
+
+    @media ${device.mobile} {
+      flex-direction: column;
+      align-items: center;
+    }
   }
 
   article {

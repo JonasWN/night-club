@@ -4,6 +4,7 @@ import styled from "styled-components"
 import { useRouter } from "next/router"
 import { isMobile } from "react-device-detect"
 import { GoThreeBars } from "react-icons/go"
+import { device } from "../styles/layout"
 
 const Nav = () => {
   if (!isMobile)
@@ -40,8 +41,8 @@ const Nav = () => {
   return (
     <StyledNav>
       <img src="./assets/Logo.png" alt="Logo-Small" />
-      <ul className="burger"></ul>
-      <GoThreeBars />
+      {/* <ul className="burger"></ul> */}
+      <GoThreeBars className="burger-menu" />
       <Polygon angle="left" />
       <Polygon angle="right" />
     </StyledNav>
@@ -63,9 +64,23 @@ const StyledNav = styled.nav`
   background: ${props => props.theme.colors.dark};
   z-index: 20;
 
+  @media ${device.mobile} {
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  .burger-menu {
+    fill: white;
+    font-size: 40px;
+  }
+
   img {
     width: 150px;
     height: 50px;
+
+    @media ${device.mobile} {
+      margin-left: 10px;
+    }
   }
 
   ul {

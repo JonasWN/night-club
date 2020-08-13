@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import { device } from "../styles/layout"
 
 const NewsLetter = () => {
   return (
@@ -43,6 +44,11 @@ const StyledNewsLetter = styled.section`
     width: 600px;
     display: flex;
     justify-content: space-between;
+
+    @media ${device.mobile} {
+      flex-direction: column;
+      width: initial;
+    }
 
     input {
       background: none;

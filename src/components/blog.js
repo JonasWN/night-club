@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import Heading from "./heading"
 import BlogPost from "./blogPost"
+import { device } from "../styles/layout"
 
 const Blog = ({ blog }) => {
   console.log(blog)
@@ -23,6 +24,12 @@ const StyledBlog = styled.section`
     justify-content: space-between;
     max-width: 1080px;
     margin: 0 auto;
+
+    @media ${device.mobile} {
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+    }
   }
 `
 
