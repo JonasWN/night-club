@@ -101,12 +101,13 @@ const Track = () => {
 }
 
 const StyledTrack = styled.section`
-  max-width: 900px;
+  max-width: 1080px;
   margin: 0 auto;
   color: ${props => props.theme.colors.white};
 
   h3 {
     text-transform: uppercase;
+    font-weight: 400;
   }
 
   svg {

@@ -12,11 +12,7 @@ const TestemonialCard = ({ person, updateList }) => {
     if (result) updateList(result.url)
   }, [result])
 
-  return (
-    <StyledTestemonialCard>
-      {result && <img src={result.url} alt="portrait" />}
-    </StyledTestemonialCard>
-  )
+  return <> </>
 }
 
 const StyledTestemonialCard = styled.li``

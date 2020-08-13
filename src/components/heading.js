@@ -15,9 +15,10 @@ const StyledH2 = styled.h2`
   color: ${props => props.theme.colors.white};
   text-align: center;
   font-weight: 500;
-  margin: 10vh 0;
+  margin: 15vh 0;
   font-size: 2rem;
   text-transform: uppercase;
+  font-weight: 400;
 
   span {
     color: ${props => props.theme.colors.accent};

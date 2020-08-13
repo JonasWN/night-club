@@ -18,7 +18,7 @@ const Event = ({ events }) => {
 const StyledEvent = styled.section`
   .events-list {
     display: flex;
-    max-width: 900px;
+    max-width: 1080px;
     margin: 0 auto;
   }
 `
