@@ -1,5 +1,6 @@
 import React from "react"
 import Polygon from "./polygon"
+import Link from "next/link"
 import styled from "styled-components"
 import { useRouter } from "next/router"
 import { isMobile } from "react-device-detect"
@@ -7,32 +8,31 @@ import { GoThreeBars } from "react-icons/go"
 import { device } from "../styles/layout"
 
 const Nav = () => {
+  const router = useRouter()
+  const paths = [
+    "/",
+    "/about",
+    "/blog",
+    "/events",
+    "/gallery",
+    "/book",
+    "/contact",
+  ]
+
   if (!isMobile)
     return (
       <StyledNav>
         <img src="./assets/Logo.png" alt="Logo-Small" />
         <ul>
-          <li>
-            <a href="">Home</a>
-          </li>
-          <li>
-            <a href="">About us</a>
-          </li>
-          <li>
-            <a href="">Blog</a>
-          </li>
-          <li>
-            <a href="">Events</a>
-          </li>
-          <li>
-            <a href="">Gallery</a>
-          </li>
-          <li>
-            <a href="">Book Table</a>
-          </li>
-          <li>
-            <a href="">Contact Us</a>
-          </li>
+          {paths.map(path => (
+            <li>
+              <Link href={`${path}`}>
+                <StyledUrl current={router.pathname === path ? true : false}>
+                  {path === "/" ? "home" : path.substr(1)}
+                </StyledUrl>
+              </Link>
+            </li>
+          ))}
         </ul>
         <Polygon angle="left" />
         <Polygon angle="right" />
@@ -102,6 +102,14 @@ const StyledNav = styled.nav`
         color: ${props => props.theme.colors.accent};
       }
     }
+  }
+`
+
+const StyledUrl = styled.a`
+  color: ${props => (props.current ? props.theme.colors.accent : "white")};
+
+  &:hover {
+    cursor: pointer;
   }
 `
 
