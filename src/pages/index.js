@@ -16,7 +16,7 @@ export default function Home(props) {
       <Hero />
       <Nav />
       <Welcome />
-      <Event />
+      <Event events={props.events} />
       <Gallery gallery={props.gallery} />
       <Track />
       <Latest />
@@ -36,6 +36,9 @@ const getData = async url => {
 }
 
 export async function getStaticProps() {
+  const eventsURL = "http://localhost:4000/events"
+  const events = await getData(eventsURL)
+
   const galleryURL = "http://localhost:4000/gallery-photos"
   const gallery = await getData(galleryURL)
 
@@ -47,6 +50,7 @@ export async function getStaticProps() {
 
   return {
     props: {
+      events,
       gallery,
       testemonials,
       blog,

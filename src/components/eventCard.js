@@ -1,9 +1,14 @@
 import React, { useState } from "react"
 import styled from "styled-components"
 import Polygon from "./polygon"
+import useSWR from "swr"
 
-const EventCard = () => {
+const fetcher = (...args) => fetch(...args).then(res => res.json())
+
+const EventCard = ({ asset, description, location, title }) => {
   const [active, setActive] = useState(false)
+  const url = `http://localhost:4000/assets/${asset}`
+  const { data: result, error } = useSWR(url, fetcher)
 
   return (
     <StyledEventCard>
@@ -11,18 +16,14 @@ const EventCard = () => {
         onMouseEnter={() => setActive(true)}
         onMouseLeave={() => setActive(false)}
       >
-        <img src="./assets/content-img/event-thumb1.jpg" alt="event-thumb" />
+        {result && <img src={result.url} alt="event-thumb" />}
         {active && (
           <>
             <figcaption>
               <button>Book Now</button>
               <article>
-                <h3>title</h3>
-                <p>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem,
-                  praesentium. Lorem ipsum dolor sit, amet consectetur
-                  adipisicing elit. Sapiente, voluptatem.
-                </p>
+                <h3>{title}</h3>
+                <p>{description}</p>
                 <div className="event-card-art-background"></div>
               </article>
               <Polygon angle="left" />
@@ -34,16 +35,19 @@ const EventCard = () => {
       </figure>
       <footer>
         <ul>
-          <li>hey</li>
-          <li>hey</li>
-          <li>hey</li>
+          <li>08</li>
+          <li>10:30 PM</li>
+          <li>{location}</li>
         </ul>
       </footer>
     </StyledEventCard>
   )
 }
 
-const StyledEventCard = styled.li`
+const StyledEventCard = styled.div`
+  :nth-child(1) {
+    margin-right: 30px;
+  }
   figure {
     position: relative;
 
@@ -56,7 +60,7 @@ const StyledEventCard = styled.li`
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding-top: 90px;
+      text-align: initial;
 
       button {
         background: ${props => props.theme.colors.accent};
@@ -65,23 +69,35 @@ const StyledEventCard = styled.li`
         width: 120px;
         border: none;
         align-self: center;
+        margin-top: 30%;
+        font-weight: 300;
+
+        &:hover {
+          cursor: pointer;
+        }
       }
 
       article {
         position: relative;
-        padding: 15px;
+        padding: 15px 3rem;
         color: ${props => props.theme.colors.white};
-        height: 60%;
+        font-weight: 300;
 
         h3 {
           font-size: 1.6rem;
           position: relative;
           z-index: 10;
+          font-weight: 300;
+          margin-bottom: 10px;
         }
 
         p {
           position: relative;
           z-index: 10;
+          -webkit-line-clamp: 2;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
         }
 
         .event-card-art-background {
@@ -116,10 +132,12 @@ const StyledEventCard = styled.li`
     display: flex;
     width: 50%;
     justify-content: flex-start;
+    padding: 0 2rem;
 
     li {
       color: ${props => props.theme.colors.white};
       font-size: 1.2rem;
+      font-weight: 300;
       margin-right: 1.2rem;
     }
   }

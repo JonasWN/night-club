@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import styled from "styled-components"
 import Heading from "./heading"
 import WelcomeCard from "./welcomeCard"
@@ -56,7 +56,7 @@ const StyledWelcome = styled.section`
     display: grid;
     grid-gap: 20px 30px;
     place-content: center;
-    grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 320px));
+    grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 340px));
 
     li {
       position: relative;

@@ -85,7 +85,6 @@ const StyledNav = styled.nav`
 
   ul {
     display: flex;
-    width: 50%;
     justify-content: space-around;
     align-items: center;
     font-weight: 300;
@@ -94,6 +93,10 @@ const StyledNav = styled.nav`
       color: ${props => props.theme.colors.white};
       text-transform: uppercase;
       font-size: 1.1rem;
+
+      :not(:last-child) {
+        margin-right: 15px;
+      }
 
       &:hover {
         color: ${props => props.theme.colors.accent};

@@ -1,19 +1,58 @@
-import React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 import { device } from "../styles/layout"
+import { useForm } from "react-hook-form"
 
 const NewsLetter = () => {
+  const { handleSubmit, register, errors } = useForm()
+  const [submitted, setSubmitted] = useState(false)
+
+  const onSubmit = (data, e) => {
+    fetch("http://localhost:4000/newsletters", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        email: `${data.email}`,
+      }),
+    })
+      .then(function (response) {})
+      .catch(function (error) {
+        console.error(error)
+      })
+
+    setSubmitted(true)
+    e.target.reset()
+  }
+
   return (
     <StyledNewsLetter>
       <h2>Want the latest night club news</h2>
       <h3>
         subscribe to our newsletter and never miss a <span>Event</span>
       </h3>
-      <form>
-        <input type="text" placeholder="Enter Your Email" />
-        <button type="submit" onClick={e => e.target.preventDefault()}>
-          subscribe
-        </button>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <input
+          type="text"
+          placeholder="Enter Your Email"
+          name="email"
+          maxLength={32}
+          ref={register({
+            required: " ",
+            pattern: {
+              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+              message: "E-Mail doesn't seem valid",
+            },
+          })}
+        />
+        {errors.email && errors.email.message}
+        {!submitted ? (
+          <button type="submit">subscribe</button>
+        ) : (
+          <h3>Thank you for subscribing to our newsletter!</h3>
+        )}
       </form>
     </StyledNewsLetter>
   )

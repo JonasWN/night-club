@@ -5,7 +5,6 @@ import BlogPost from "./blogPost"
 import { device } from "../styles/layout"
 
 const Blog = ({ blog }) => {
-  console.log(blog)
   return (
     <StyledBlog>
       <Heading title="Recent Blog" />
